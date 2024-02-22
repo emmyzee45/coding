@@ -25,7 +25,7 @@ class LinkedList {
             node.next = this.head;
             this.head = node;
         }
-        this.head = node;
+        // this.head = node;
         this.size++;
     }
     append(value) {
@@ -165,11 +165,11 @@ class LinkedList {
         }
     }
 
-    print() {
+    print(head) {
         if(this.isEmpty()) {
             console.log("list is empty")
         } else {
-            let curr = this.head;
+            let curr = head;
             let listValues = '';
             while(curr){
                 listValues += `${curr.value} `;
@@ -178,22 +178,62 @@ class LinkedList {
             console.log(listValues)
         }
     }
+    partition(list, target) {
+        let curr = list;
+        let s1 = new Node(0);
+        let s2 = new Node(0);
+        let p1 = s1;
+        let p2 = s2;
+
+        while(curr) {
+            if(curr.value < target) {
+                p1.next = new Node(curr.value);
+                p1 = p1.next;
+            } else {
+                p2.next = new Node(curr.value);
+                p2 = p2.next;
+            }
+            curr = curr.next
+        }
+        p1.next = s2.next;
+        // this.print(s1.next)
+        return s1.next;
+    }
+    removeNthFromEnd(head, n) {
+     
+        let dummy = head;
+        let first = dummy;
+        let second = dummy;
+
+        for(let i = 0; i < n + 1; i++) {
+            first = first.next;
+        }
+
+        while(first) {
+            first = first.next;
+            second = second.next;
+        }
+
+        second.next = second.next.next;
+        return head;
+    }
+
 }
 
 const list = new LinkedList();
-console.log(list.isEmpty());
-console.log(list.getSize());
-list.print()
-list.append(1)
+// console.log(list.isEmpty());
+// console.log(list.getSize());
+// list.print()
 list.append(2)
+list.append(1)
 list.append(3)
 list.append(4)
 list.append(5)
-list.append(6)
-list.append(7)
-list.append(8)
+list.print(list.head)
+list.removeNthFromEnd(list.head, 2)
 // list.insert(3, 2)
-list.print()
-list.reOrderList(list.head)
+list.print(list.head)
+// list.partition(list.head, 2)
+// list.reOrderList(list.head)
 // list.reverse()
-list.print()
+// list.print(list.partition(list.head, 2))
