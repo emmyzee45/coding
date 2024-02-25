@@ -166,17 +166,14 @@ class LinkedList {
     }
 
     print(head) {
-        if(this.isEmpty()) {
-            console.log("list is empty")
-        } else {
-            let curr = head;
-            let listValues = '';
-            while(curr){
-                listValues += `${curr.value} `;
-                curr = curr.next;
-            }
-            console.log(listValues)
+      
+        let curr = head;
+        let listValues = '';
+        while(curr){
+            listValues += `${curr.value} `;
+            curr = curr.next;
         }
+        console.log(listValues)
     }
     partition(list, target) {
         let curr = list;
@@ -217,22 +214,63 @@ class LinkedList {
         second.next = second.next.next;
         return head;
     }
+    mergeLinkedList(arr) {
+        let solution = new Node(0);
+        
+        for(let i = 0; i < arr.length; i++) {
+            let curr = solution;
+            let list = arr[i];
+            // console.log(list)
+            while(list) {
+                let node = new Node(list.value);
+                // if( curr && curr.value <= list.value){
+                //     console.log(node.value)
+                //     console.log(curr)
+                //     node.next = curr.next;
+                //     curr.next = node;
+                //     list = list.next;
+                // } else {
+                //     // console.log(node.value)
+                //     curr.next = node;
+                // }
+                console.log(curr)
+                while(curr && curr.value < node.value) {
+                    curr = curr.next;
+                }
+                node.next = curr.next;
+                curr.next = node;
+                list = list.next;
+                // curr = curr.next;
+            }
+            // console.log(solution)
+        }
+        this.print(solution.next)
+        // return solution.next;
+    }
 
 }
 
 const list = new LinkedList();
+const list1 = new LinkedList();
+const list2 = new LinkedList();
+const list3 = new LinkedList();
 // console.log(list.isEmpty());
 // console.log(list.getSize());
 // list.print()
-list.append(2)
+// lists = [[1,4,5],[1,3,4],[2,6]]
 list.append(1)
-list.append(3)
 list.append(4)
 list.append(5)
-list.print(list.head)
-list.removeNthFromEnd(list.head, 2)
+list1.append(1)
+list1.append(3)
+list1.append(4)
+list2.append(2)
+list2.append(6)
+console.log(list3.mergeLinkedList([list.head, list1.head, list2.head]))
+// list.print(list.head)
+// list.removeNthFromEnd(list.head, 2)
 // list.insert(3, 2)
-list.print(list.head)
+// list.print(list.head)
 // list.partition(list.head, 2)
 // list.reOrderList(list.head)
 // list.reverse()

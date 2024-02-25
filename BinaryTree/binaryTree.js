@@ -168,6 +168,26 @@ class BinarySearchTree {
         }
         return root
     }
+    maxPathSum (root) {
+    
+        let max = -Infinity;
+    
+        function dfs(root) {
+    
+            if(!root) return 0;
+    
+            let left = Math.max(0, dfs(root.left));
+            let right = Math.max(0, dfs(root.right));
+            let curMax = left + root.value + right;
+            console.log(left, right, curMax)
+            max = Math.max(curMax, max);
+    
+            return root.value + Math.max(left, right);
+        }
+        dfs(root);
+        return max;
+    
+    }
 }
 
 const bst = new BinarySearchTree();
@@ -179,4 +199,5 @@ bst.insert(3)
 bst.insert(7)
 // bst.delete(10)
 // bst.inOrder(bst.root)
-console.log(bst.levelOrderArray(bst.root))
+console.log(bst.maxPathSum(bst.root))
+// console.log(bst.levelOrderArray(bst.root))
