@@ -188,6 +188,33 @@ class BinarySearchTree {
         return max;
     
     }
+    invertTree (root) {
+        if(root) {
+            [root.left, root.right] = [this.invertTree(root.right), this.invertTree(root.left)];
+        }
+        return root;
+    }
+
+    kthSmallest(root, k) {
+        let len = 0;
+
+       
+        function dfs(root) {
+            if(!root) {
+                return;
+            }
+            if(root.value <= k) {
+                console.log(root.value);
+                len++;
+            };
+            
+            dfs(root.left, k);
+            dfs(root.right, k)
+        }
+        
+        dfs(root)
+        return len;
+    }
 }
 
 const bst = new BinarySearchTree();
@@ -199,5 +226,7 @@ bst.insert(3)
 bst.insert(7)
 // bst.delete(10)
 // bst.inOrder(bst.root)
-console.log(bst.maxPathSum(bst.root))
+// console.log(bst.maxPathSum(bst.root))
 // console.log(bst.levelOrderArray(bst.root))
+// console.log(bst.invertTree(bst.root));
+console.log(bst.kthSmallest(bst.root, 7));
