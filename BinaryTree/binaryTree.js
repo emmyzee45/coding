@@ -215,7 +215,40 @@ class BinarySearchTree {
         dfs(root)
         return len;
     }
-}
+    lowestCommonAcestor(root, p, q) {
+        if(!root) return
+        if(root.value > p && root.value > q) {
+            return this.lowestCommonAcestor(root.left);
+        } else if( root.value < p && root.value < q) {
+            return this.lowestCommonAcestor(root.right);
+        } else {
+            return root.value;
+        }
+    }
+    // maxDepth = (root) => {
+    //     let maxLength = 0;
+    
+    //     function dfs(root, len) {
+    //         if(!root) return;
+    //         if(len > maxLength) maxLength = len;
+    
+    //         dfs(root.left, len+1);
+    //         dfs(root.right, len+1);
+    //     }
+    
+    //     dfs(root, 1)
+        
+    //     return maxLength;
+    // }
+    maxDepth(root) {
+        if (!root) return 0;
+    
+        const leftDepth = this.maxDepth(root.left);
+        const rightDepth = this.maxDepth(root.right);
+    
+        return Math.max(leftDepth, rightDepth) + 1;
+    }    
+}   
 
 const bst = new BinarySearchTree();
 // console.log(bst.isEmpty())
@@ -229,4 +262,6 @@ bst.insert(7)
 // console.log(bst.maxPathSum(bst.root))
 // console.log(bst.levelOrderArray(bst.root))
 // console.log(bst.invertTree(bst.root));
-console.log(bst.kthSmallest(bst.root, 7));
+// console.log(bst.kthSmallest(bst.root, 7));
+// console.log(bst.lowestCommonAcestor(bst.root, 3,7))
+console.log(bst.maxDepth(bst.root))

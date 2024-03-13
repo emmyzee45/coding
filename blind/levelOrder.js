@@ -18,6 +18,7 @@ function levelOrder(root) {
             levelArr.push(current.value);
             levelSize--;
         }
+        
         res.push(levelArr)
     }
 }
