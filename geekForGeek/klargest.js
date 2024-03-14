@@ -16,6 +16,8 @@ function findKthLargest(arr, k) {
 	// Perform binary search on the range of elements between low and high
 	while (low <= high) {
 		let mid = low + Math.floor((high - low) / 2);
+		// let mid1 = Math.floor((high + low) / 2);
+		// console.log(mid, mid1)
 		let count = 0;
 
 		// Count the number of elements greater than mid in the array
@@ -43,7 +45,7 @@ function findKthLargest(arr, k) {
 function printKLargest(arr, k) {
 	// Find the Kth largest element
 	const kthLargest = findKthLargest(arr, k);
-
+	console.log(kthLargest)
 	// Print the K largest elements in decreasing order
 	process.stdout.write("K largest elements: ");
 	for (let i = 0; i < arr.length; i++) {
