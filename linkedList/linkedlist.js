@@ -214,38 +214,60 @@ class LinkedList {
         second.next = second.next.next;
         return head;
     }
-    mergeLinkedList(arr) {
-        let solution = new Node(0);
-        
-        for(let i = 0; i < arr.length; i++) {
-            let curr = solution;
-            let list = arr[i];
-            // console.log(list)
-            while(list) {
-                let node = new Node(list.value);
-                // if( curr && curr.value <= list.value){
-                //     console.log(node.value)
-                //     console.log(curr)
-                //     node.next = curr.next;
-                //     curr.next = node;
-                //     list = list.next;
-                // } else {
-                //     // console.log(node.value)
-                //     curr.next = node;
-                // }
-                console.log(curr)
-                while(curr && curr.value < node.value) {
-                    curr = curr.next;
-                }
-                node.next = curr.next;
-                curr.next = node;
-                list = list.next;
-                // curr = curr.next;
-            }
-            // console.log(solution)
+    mergeTwoLinkedList(list1, list2) {
+    //    let p1 = list1;
+    //    let p2 = list2;
+    //    let solution = new Node(0);
+    //    let curr = solution;
+
+    //    while(p1 && p2) {
+    //         if(p1.value <= p2.value) {
+    //             curr.next = new Node(p1.value);
+    //             curr = curr.next;
+    //             p1 = p1.next;
+    //         } else {
+    //             curr.next = new Node(p2.value);
+    //             curr = curr.next;
+    //             p2 = p2.next;
+    //         }
+    //    }
+    //    while(p1) {
+    //     curr.next = new Node(p1.value);
+    //     curr = curr.next;
+    //     p1 = p1.next;
+    //    }
+    //    while(p2) {
+    //     curr.next = new Node(p2.value);
+    //     curr = curr.next;
+    //     p2 = p2.next;
+    //    }
+    //    return solution.next;
+    let dummy = new Node(0);
+    let head = dummy;
+
+    while(list1 && list2) {
+        if(list1.value <= list2.value) {
+            dummy.next = list1;
+            list1 = list1.next;
+        } else {
+            dummy.next = list2;
+            list2 = list2.next;
         }
-        this.print(solution.next)
-        // return solution.next;
+        dummy = dummy.next;
+    }
+    if(list1 != null) {
+        dummy.next = list1;
+        dummy = dummy.next;
+    }
+    if(list2 != null) {
+        dummy.next = list2;
+        dummy = dummy.next;
+    }
+    this.print(head.next)
+    return head.next;
+    }
+    mergeArrayOfLinkedList(arr) {
+
     }
 
 }
@@ -264,9 +286,10 @@ list.append(5)
 list1.append(1)
 list1.append(3)
 list1.append(4)
-list2.append(2)
-list2.append(6)
-console.log(list3.mergeLinkedList([list.head, list1.head, list2.head]))
+// list2.append(2)
+// list2.append(6)
+list.mergeTwoLinkedList(list.head, list1.head);
+// console.log(list3.mergeArrayOfLinkedList([list.head, list1.head, list2.head]))
 // list.print(list.head)
 // list.removeNthFromEnd(list.head, 2)
 // list.insert(3, 2)
