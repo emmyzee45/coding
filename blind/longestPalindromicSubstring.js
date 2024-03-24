@@ -22,6 +22,7 @@ function longestPalindrome(str) {
 
     }
     return longest;
+    
 }
 
 console.log(longestPalindrome('baabbaad'))

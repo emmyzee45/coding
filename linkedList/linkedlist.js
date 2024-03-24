@@ -267,7 +267,39 @@ class LinkedList {
     return head.next;
     }
     mergeArrayOfLinkedList(arr) {
+        let res = [];
 
+        while(arr.length > 1) {
+            let list1 = arr.shift();
+            let list2 = arr.shift();
+
+            let list = merge(list1, list2);
+            arr.push(list);
+        }
+
+        function merge(list1, list2) {
+            let head = new Node(0);
+            let dummy = head;
+            while(list1 && list2) {
+                if(list1.value <= list2.value) {
+                    dummy.next = list1;
+                    list1 = list1.next;
+                } else {
+                    dummy.next = list2;
+                    list2 = list2.next;
+                }
+                dummy = dummy.next;
+            }
+
+            if(list1) {
+                dummy.next = list1;
+            }
+            if(list2) {
+                dummy.next = list2;
+            }
+            return head.next;
+        }
+        return arr[0];
     }
 
 }
@@ -286,10 +318,11 @@ list.append(5)
 list1.append(1)
 list1.append(3)
 list1.append(4)
-// list2.append(2)
-// list2.append(6)
-list.mergeTwoLinkedList(list.head, list1.head);
-// console.log(list3.mergeArrayOfLinkedList([list.head, list1.head, list2.head]))
+list2.append(2)
+list2.append(6)
+list2.append(9)
+// list.mergeTwoLinkedList(list.head, list1.head);
+console.log(list3.mergeArrayOfLinkedList([list.head, list1.head, list2.head]))
 // list.print(list.head)
 // list.removeNthFromEnd(list.head, 2)
 // list.insert(3, 2)
