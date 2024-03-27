@@ -14,6 +14,7 @@ function quicksort(arr) {
     }
 
     return [...quicksort(left), pivot, ...quicksort(right)]
+
 }
 // Worst case - O(n2)
 // Average case - O(nlogn)
