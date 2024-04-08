@@ -247,11 +247,29 @@ class BinarySearchTree {
         const rightDepth = this.maxDepth(root.right);
     
         return Math.max(leftDepth, rightDepth) + 1;
-    }    
+    }  
+    sameTree(root1, root2) {
+
+        if(root1 === null && root2 == null ) return true;
+        if(!root1 && root2 || root1 && !root2) return false;
+
+        if(root1.value === root2.value){
+            return this.sameTree(root1.left, root2.left) && this.sameTree(root1.right, root2.right);
+        }
+        return false;
+    }  
 }   
 
 const bst = new BinarySearchTree();
+const bst1 = new BinarySearchTree();
+const bst2 = new BinarySearchTree();
 // console.log(bst.isEmpty())
+bst1.insert(1)
+bst1.insert(2)
+bst1.insert(3)
+bst2.insert(1)
+bst2.insert(2)
+bst2.insert(3)
 bst.insert(10)
 bst.insert(5)
 bst.insert(15)
@@ -264,4 +282,5 @@ bst.insert(7)
 // console.log(bst.invertTree(bst.root));
 // console.log(bst.kthSmallest(bst.root, 7));
 // console.log(bst.lowestCommonAcestor(bst.root, 3,7))
-console.log(bst.maxDepth(bst.root))
+// console.log(bst.maxDepth(bst.root))
+console.log(bst.sameTree(bst1.root, bst2.root))

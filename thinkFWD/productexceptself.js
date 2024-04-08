@@ -5,12 +5,12 @@ function productExceptSelf(nums) {
     for(let i = 1; i < nums.length; i++) {
         output[i] = output[i - 1] * nums[i];
     }
-    // console.log(output)
+    
     // console.log(output[output.length - 2])
     // console.log(output[nums.length - 1])
 
-    output[nums.length - 1] = output[output.length - 2];
     console.log(output)
+    output[nums.length - 1] = output[output.length - 2];
     for(let j = nums.length - 2; j > 0; j--) {
         console.log(output[j])
         output[j] = output[j-1] * cacheVer;
