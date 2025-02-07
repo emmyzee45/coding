@@ -35,6 +35,8 @@ Trie.prototype.startWith = function(word) {
 
 const trie = new Trie();
 trie.insert("apple");
+// trie.insert("eat");
+// trie.insert("eat");
 console.log(trie.search("app"));
 // trie.insert("app");
 console.log(trie.startWith("app"));
