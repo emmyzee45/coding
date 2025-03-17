@@ -4,19 +4,19 @@ class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
         res = []
 
-        def backtrack(i, subset):
+        def backtrack(subset, i):
             if i == len(nums):
                 res.append(subset[::])
                 return
-
+            
             subset.append(nums[i])
-            backtrack(i + 1, subset)
+            backtrack(subset, i + 1)
             subset.pop()
 
-            while i + 1 < len(nums) and nums[i] == nums[i + 1]:
+            while i < len(nums) and nums[i] == nums[i + 1]:
                 i += 1
-            backtrack(i + 1, subset)
-        backtrack(0, [])
+            backtrack(subset, i + 1)
+        backtrack([], 0)
         return res
         
 

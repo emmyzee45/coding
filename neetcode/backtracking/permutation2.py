@@ -8,10 +8,11 @@ class Solution:
 
         for n in nums:
             count[n] += 1
-
+        
         def dfs():
             if len(perm) == len(nums):
-                return res.append(perm.copy())
+                res.append(perm.copy())
+                return
             
             for n in count:
                 if count[n] > 0:
@@ -19,9 +20,8 @@ class Solution:
                     count[n] -= 1
 
                     dfs()
-
                     perm.pop()
-                    count[n] += 1
+                    count[n] +=1
         dfs()
         return res
 

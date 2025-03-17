@@ -85,27 +85,6 @@ class BinarySearchTree {
         }
     }
     levelOrderArray(root) {
-        // if(root === null) return [];
-
-        // const queue = [root];
-        // const res = [];
-    
-        // while(queue.length) {
-        //     let levelSize = queue.length;
-        //     let levelArr = [];
-
-        //     while(levelSize) {
-        //         let current = queue.shift();
-    
-        //         if(current.left) queue.push(current.left);
-        //         if(current.right) queue.push(current.right);
-    
-        //         levelArr.push(current.value);
-        //         levelSize--;
-        //     }
-        //     res.push(levelArr)
-        // }
-        // return res;
         if(root === null) return [];
 
         let queue = [root];
@@ -179,7 +158,6 @@ class BinarySearchTree {
             let left = Math.max(0, dfs(root.left));
             let right = Math.max(0, dfs(root.right));
             let curMax = left + root.value + right;
-            console.log(left, right, curMax)
             max = Math.max(curMax, max);
     
             return root.value + Math.max(left, right);
@@ -225,21 +203,6 @@ class BinarySearchTree {
             return root.value;
         }
     }
-    // maxDepth = (root) => {
-    //     let maxLength = 0;
-    
-    //     function dfs(root, len) {
-    //         if(!root) return;
-    //         if(len > maxLength) maxLength = len;
-    
-    //         dfs(root.left, len+1);
-    //         dfs(root.right, len+1);
-    //     }
-    
-    //     dfs(root, 1)
-        
-    //     return maxLength;
-    // }
     maxDepth(root) {
         if (!root) return 0;
     
@@ -275,12 +238,12 @@ bst.insert(5)
 bst.insert(15)
 bst.insert(3)
 bst.insert(7)
-// bst.delete(10)
-// bst.inOrder(bst.root)
-// console.log(bst.maxPathSum(bst.root))
-// console.log(bst.levelOrderArray(bst.root))
-// console.log(bst.invertTree(bst.root));
-// console.log(bst.kthSmallest(bst.root, 7));
-// console.log(bst.lowestCommonAcestor(bst.root, 3,7))
-// console.log(bst.maxDepth(bst.root))
+bst.delete(10)
+bst.inOrder(bst.root)
+console.log(bst.maxPathSum(bst.root))
+console.log(bst.levelOrderArray(bst.root))
+console.log(bst.invertTree(bst.root));
+console.log(bst.kthSmallest(bst.root, 7));
+console.log(bst.lowestCommonAcestor(bst.root, 3,7))
+console.log(bst.maxDepth(bst.root))
 console.log(bst.sameTree(bst1.root, bst2.root))
