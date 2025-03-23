@@ -2,7 +2,7 @@ import sys
 import os
 sys.path.append(os.path.abspath("../neetcode/binaryTrees"))
 
-from rightSideView import Solution
+from ContructString import Solution
 
 class Node:
     def __init__(self, val):
@@ -211,7 +211,7 @@ bst.insert(7)
 # bst.delete(10)
 # bst.in_order(bst.root)
 # print(balancedTree.isBalanced(bst.root))
-print(rightside.rightSideView(bst.root))
+print(rightside.tree2Str(bst.root))
 # print("Max Path Sum:", bst.max_path_sum(bst.root))
 # print("Level Order Array:", bst.level_order_array(bst.root))
 # print("Inverted Tree Root:", bst.invert_tree(bst.root))
