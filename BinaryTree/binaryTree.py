@@ -2,7 +2,7 @@ import sys
 import os
 sys.path.append(os.path.abspath("../neetcode/binaryTrees"))
 
-from ContructString import Solution
+from recoverTreeFromPreorder import Solution
 
 class Node:
     def __init__(self, val):
@@ -70,7 +70,6 @@ class BinarySearchTree:
         queue = [self.root]
         while queue:
             curr = queue.pop(0)
-            print(curr.val)
             if curr.left:
                 queue.append(curr.left)
             if curr.right:
@@ -92,6 +91,7 @@ class BinarySearchTree:
                 if current.right:
                     queue.append(current.right)
             res.append(level_arr)
+        print(res)
         return res
 
     def min(self, root):
@@ -191,7 +191,6 @@ class BinarySearchTree:
 bst = BinarySearchTree()
 # bst1 = BinarySearchTree()
 # bst2 = BinarySearchTree()
-rightside = Solution()
 
 
 # bst1.insert(1)
@@ -208,10 +207,12 @@ bst.insert(15)
 bst.insert(3)
 bst.insert(7)
 
+contruct = Solution()
+
+bst.level_order_array(contruct.recoverFromPreorder("1-2--3--4-5--6--7"))
 # bst.delete(10)
 # bst.in_order(bst.root)
 # print(balancedTree.isBalanced(bst.root))
-print(rightside.tree2Str(bst.root))
 # print("Max Path Sum:", bst.max_path_sum(bst.root))
 # print("Level Order Array:", bst.level_order_array(bst.root))
 # print("Inverted Tree Root:", bst.invert_tree(bst.root))
