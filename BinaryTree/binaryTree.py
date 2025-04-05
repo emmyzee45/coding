@@ -2,7 +2,7 @@ import sys
 import os
 sys.path.append(os.path.abspath("../neetcode/binaryTrees"))
 
-from recoverTreeFromPreorder import Solution
+from AncestorOfDeepestLeaves import Solution
 
 class Node:
     def __init__(self, val):
@@ -91,7 +91,6 @@ class BinarySearchTree:
                 if current.right:
                     queue.append(current.right)
             res.append(level_arr)
-        print(res)
         return res
 
     def min(self, root):
@@ -193,9 +192,9 @@ bst = BinarySearchTree()
 # bst2 = BinarySearchTree()
 
 
-# bst1.insert(1)
-# bst1.insert(2)
+# bst1.insert(5)
 # bst1.insert(3)
+# bst1.insert(7)
 
 # bst2.insert(1)
 # bst2.insert(2)
@@ -206,10 +205,12 @@ bst.insert(5)
 bst.insert(15)
 bst.insert(3)
 bst.insert(7)
+bst.insert(13)
+bst.insert(14)
 
 contruct = Solution()
 
-bst.level_order_array(contruct.recoverFromPreorder("1-2--3--4-5--6--7"))
+print(contruct.lcaDeepestLeAves(bst.root))
 # bst.delete(10)
 # bst.in_order(bst.root)
 # print(balancedTree.isBalanced(bst.root))

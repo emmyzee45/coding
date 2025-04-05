@@ -7,7 +7,7 @@ class TreeNode:
 class Solution:
     def isSubTree(self, s: TreeNode, t: TreeNode) -> bool:
         if not t: return True
-        if not s: return False
+        if not s: return True
 
         if self.sameTree(s, t):
             return True
@@ -17,6 +17,7 @@ class Solution:
     def sameTree(self, s, t):
         if not s and not t:
             return True
-        if s and t and t.val == s.val:
-            return self.sameTree(s.left, t.left) and self.sameTree(s.right, t.right)
+        
+        if s and t and s.val == t.val:
+            return (self.sameTree(s.left, t.left) and self.sameTree(s.right, t.right))
         return False

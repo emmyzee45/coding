@@ -33,3 +33,9 @@ class WordDictionary:
                     cur = cur.children[c]
             return cur.word
         return dfs(0, self.root)
+    
+dict = WordDictionary()
+dict.addWord("bad")
+dict.addWord("dad")
+dict.addWord("mad")
+print(dict.search(".ad"))
