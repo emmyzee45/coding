@@ -2,7 +2,7 @@ import sys
 import os
 sys.path.append(os.path.abspath("../neetcode/binaryTrees"))
 
-from AncestorOfDeepestLeaves import Solution
+from leftmostValue import Solution
 
 class Node:
     def __init__(self, val):
@@ -205,12 +205,10 @@ bst.insert(5)
 bst.insert(15)
 bst.insert(3)
 bst.insert(7)
-bst.insert(13)
-bst.insert(14)
 
 contruct = Solution()
 
-print(contruct.lcaDeepestLeAves(bst.root))
+print(contruct.findBottomLeftValue(bst.root))
 # bst.delete(10)
 # bst.in_order(bst.root)
 # print(balancedTree.isBalanced(bst.root))
