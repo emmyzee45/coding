@@ -8,6 +8,20 @@ class TreeNode:
 
 class Solution:
     def contructFromPrePost(self, preorder: List[int], postorder: List[int]) -> Optional[TreeNode]:
+        if not preorder or not postorder:
+            return None
+
+        root = TreeNode(preorder[0])
+        if len(preorder) == 1:
+            return root
+
+        left_subtree_root = preorder[1]
+        left_subtree_size = postorder.index(left_subtree_root) + 1
+
+        root.left = self.constructFromPrePost(preorder[1:left_subtree_size+1], postorder[:left_subtree_size])
+        root.right = self.constructFromPrePost(preorder[left_subtree_size+1:], postorder[left_subtree_size:-1])
+
+        return root
         N = len(postorder)
         post_val_to_idx = {}
 

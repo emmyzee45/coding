@@ -4,6 +4,7 @@ class TreeNode:
         self.left = left
         self.right = right
 
+
 class Solution:
     def kthSmallest(self, root: TreeNode, k: int) -> int:
         n = 0
@@ -18,24 +19,3 @@ class Solution:
             if n == k:
                 return cur.val
             cur = cur.right
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
-
-
-# class Solution:
-#     def kthSmallest(self, root: TreeNode, k: int) -> int:
-#         n = 0
-#         cur, stack = root, []
-
-#         while cur or stack:
-#             while cur:
-#                 stack.append(cur)
-#                 cur = cur.left
-#             cur = stack.pop()
-#             n += 1
-#             if n == k:
-#                 return cur.val
-#             cur = cur.right

@@ -25,7 +25,6 @@ class Solution:
                  return 0
             
             num = num * 10 + cur.val
-            print(num)
             if not cur.left and not cur.right:
                 return num
             return dfs(cur.left, num) + dfs(cur.right, num)

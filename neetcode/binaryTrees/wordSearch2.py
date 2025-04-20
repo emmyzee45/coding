@@ -45,3 +45,7 @@ class Solution:
                 dfs(r, c, root, "")
         
         return len(res)
+
+
+obj = Solution()
+print(obj.findWords([["o", "a","a","n"],["e","t","a","e"],["i","h","k","r"],["i","f","l","v"]], ["oath","pea","eat","rain"]))
