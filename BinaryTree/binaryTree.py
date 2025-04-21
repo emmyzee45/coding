@@ -2,7 +2,7 @@ import sys
 import os
 sys.path.append(os.path.abspath("../neetcode/binaryTrees"))
 
-from leftmostValue import Solution
+from rightSideView import Solution
 
 class Node:
     def __init__(self, val):
@@ -208,7 +208,7 @@ bst.insert(7)
 
 contruct = Solution()
 
-print(contruct.findBottomLeftValue(bst.root))
+print(contruct.rightSideView(bst.root))
 # bst.delete(10)
 # bst.in_order(bst.root)
 # print(balancedTree.isBalanced(bst.root))

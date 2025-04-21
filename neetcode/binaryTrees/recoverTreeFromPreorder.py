@@ -15,6 +15,7 @@ class Solution:
         while i < len(traversal):
             if traversal[i] == "-":
                 dashes += 1
+                i += 1
             else:
                 j = i
                 while j < len(traversal) and traversal[j] != "-":
