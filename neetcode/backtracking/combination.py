@@ -1,25 +1,22 @@
 from typing import List
 
 class Solution:
-    def combinationSum(self, candidadates: List[int], target: int) -> List[List[int]]:
+    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
         res = []
 
-        def backtrack(cur, pos, target):
-            if target == 0:
+        def backtrack(i, cur, total):
+            if total == target:
                 res.append(cur.copy())
-            if target <= 0:
                 return
             
-            prev = -1
-            for i in range(pos, len(candidates)):
-                if candidates[i] == prev:
-                    continue
-                cur.append(candidates[i])
-                backtrack(cur, i + 1, target - candidates[i])
-                cur.pop()
-                prev = candidates[i]
-
-        backtrack([], 0, target)
+            if i >= len(candidates) or total > target:
+                return
+            
+            cur.append(candidates[i])
+            backtrack(i, cur, total + candidates[i])
+            cur.pop()
+            backtrack(i + 1, cur, total)
+        backtrack(0, [], 0)
         return res
 
 obj = Solution()
