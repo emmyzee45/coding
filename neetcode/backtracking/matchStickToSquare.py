@@ -14,7 +14,7 @@ class Solution:
             if i == len(matchsticks):
                 return True
             
-            for j in range(len(matchsticks)):
+            for j in range(4):
                 if sides[j] + matchsticks[i] <= length:
                     sides[j] += matchsticks[i]
                     if backtrack(i + 1):
