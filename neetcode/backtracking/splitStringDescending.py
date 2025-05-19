@@ -14,4 +14,4 @@ class Solution:
             if dfs(i + 1, val): return True
 
 obj = Solution()
-print(obj.splitString("0090089"))
+print(obj.splitString("0090090"))
