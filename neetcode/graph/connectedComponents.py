@@ -14,7 +14,7 @@ class Solution:
             return res
         
         def union(n1, n2):
-            p1, p2, = find(n1), find(n2)
+            p1, p2 = find(n1), find(n2)
             
             if p1 == p2:
                 return 0
@@ -24,12 +24,12 @@ class Solution:
                 rank[p2] += rank[p1]
             else:
                 par[p2] = p1
-                rank[p1] += rank[p2]
+                rank[p1] += p2
             return 1
         
         res = n
-        for v1, v2 in edges:
-            res -= union(v1, v2)
+        for n1, n2 in edges:
+            res -= union(n1, n2)
         return res
     
 obj = Solution()
