@@ -21,12 +21,13 @@ class Solution:
                     bob_times[src] = time
                     return True
             return False
+
         dfs(bob, -1, 0)
         
         # Alice Simulation - BSF
         q = Deque()
-        q.append([(0, 0, -1, amount[0])])
-        res = float('inf')
+        q.append((0, 0, -1, amount[0]))
+        res = float('-inf')
         while q:
             node, time, parent, profit = q.popleft()
 
@@ -45,3 +46,6 @@ class Solution:
                 if len(adj[nei]) == 1:
                     res = max(res, profit + nei_profit)
         return int(res)
+    
+obj = Solution()
+print(obj.mostProfitablePath([[0,1],[1,2],[1,3],[3,4]], 3, [-2,4,2,-4,6]))
